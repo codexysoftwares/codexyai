@@ -39,6 +39,8 @@ export interface LandingPageData {
   painPoints: FeatureItem[];
   benefits: FeatureItem[];
   faq: FaqItem[];
+  /** Só páginas com conteúdo próprio para nicho+cidade podem entrar no Google. */
+  indexable: boolean;
   /** Data de revisão substancial, usada no sitemap somente quando a página
    * recebeu conteúdo próprio além do template programático. */
   updatedAt?: string;
@@ -2589,6 +2591,7 @@ function buildLandingPage(template: NicheTemplate, state: StateInfo): LandingPag
     benefits:
       priorityOverride?.benefits ?? pickVariant(template.benefitsVariants, template.benefits, seed),
     faq: priorityOverride?.faq ?? pickVariant(template.faqVariants, template.faq, seed),
+    indexable: Boolean(priorityOverride),
     updatedAt: priorityOverride?.updatedAt,
     partner: template.partner,
     whatsappMessage: template.whatsappMessage(state),
@@ -2613,6 +2616,10 @@ export const landingPages: LandingPageData[] = NICHE_TEMPLATES.flatMap((template
   ...BRAZILIAN_CITIES.map((city) => buildLandingPage(template, city)),
 ]);
 
+// URLs antigas continuam acessíveis, mas busca orgânica e links internos
+// usam apenas páginas com conteúdo substancial escrito para nicho+cidade.
+export const indexableLandingPages = landingPages.filter((page) => page.indexable);
+
 export function getLandingPageBySlug(slug?: string): LandingPageData | undefined {
   return landingPages.find((page) => page.slug === slug);
 }
@@ -2623,11 +2630,11 @@ export function getRelatedPages(page: LandingPageData): {
   otherNichesSameLocation: LandingPageData[];
   otherLocationsSameNiche: LandingPageData[];
 } {
-  const otherNichesSameLocation = landingPages.filter(
+  const otherNichesSameLocation = indexableLandingPages.filter(
     (p) => p.locationSlug === page.locationSlug && p.nicheSlug !== page.nicheSlug
   );
 
-  const otherLocationsSameNiche = landingPages
+  const otherLocationsSameNiche = indexableLandingPages
     .filter((p) => p.nicheSlug === page.nicheSlug && p.locationSlug !== page.locationSlug)
     .slice(0, 8);
 

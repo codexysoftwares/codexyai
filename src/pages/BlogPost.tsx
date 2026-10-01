@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import InformacoesNavbar from "@/components/landing/InformacoesNavbar";
 import { getBlogPostBySlug, getOtherPosts, FALLBACK_COVER, type BlogPost as BlogPostData } from "@/data/blogPosts";
-import { landingPages, type LandingPageData } from "@/data/landingPages";
+import { indexableLandingPages, type LandingPageData } from "@/data/landingPages";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const SITE_URL = "https://codexy.com.br";
@@ -50,7 +50,7 @@ function getRelatedServicePages(post: BlogPostData): LandingPageData[] {
 
   return preferredNiches
     .map((nicheSlug) =>
-      landingPages.find(
+      indexableLandingPages.find(
         (page) => page.nicheSlug === nicheSlug && page.locationSlug === "sao-paulo-sp"
       )
     )

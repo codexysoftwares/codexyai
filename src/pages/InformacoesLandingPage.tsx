@@ -146,7 +146,11 @@ const InformacoesLandingPage = () => {
         <meta name="twitter:image" content={ogImageUrl} />
         <meta name="twitter:image:alt" content={page.heroImageAlt} />
 
-        <link rel="canonical" href={pageUrl} />
+        {page.indexable ? (
+          <link rel="canonical" href={pageUrl} />
+        ) : (
+          <meta name="robots" content="noindex, follow" />
+        )}
 
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
