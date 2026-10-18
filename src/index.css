@@ -305,3 +305,36 @@ All colors MUST be HSL.
     }
   }
 }
+
+/* Motion no estilo dos anúncios (componentes em src/lib/motion.tsx). */
+
+/* Ícone lucide desenhando o próprio traço. 120 cobre o maior traço de um
+   ícone 24x24; traços curtos terminam antes, o que dá um efeito escalonado. */
+.draw-icon :is(path, circle, rect, line, polyline, polygon, ellipse) {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+}
+.draw-icon.is-drawn :is(path, circle, rect, line, polyline, polygon, ellipse) {
+  stroke-dashoffset: 0;
+}
+
+/* Grade técnica do hero andando devagar na diagonal (fundo nunca parado). */
+.grid-drift {
+  animation: grid-drift 24s linear infinite;
+}
+@keyframes grid-drift {
+  to {
+    background-position: 50px 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-icon :is(path, circle, rect, line, polyline, polygon, ellipse) {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .grid-drift {
+    animation: none;
+  }
+}

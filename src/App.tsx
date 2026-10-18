@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import type { ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PoliticaPrivacidade from "./pages/politica-privacidade";
@@ -32,9 +33,12 @@ const queryClient = new QueryClient();
 export const AppProviders = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      {children}
+      {/* "user": quem ativou reduzir movimento no sistema não vê animação de transform. */}
+      <MotionConfig reducedMotion="user">
+        <Toaster />
+        <Sonner />
+        {children}
+      </MotionConfig>
     </TooltipProvider>
   </QueryClientProvider>
 );

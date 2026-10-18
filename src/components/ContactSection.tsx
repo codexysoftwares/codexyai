@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { DrawIcon, KineticText, Reveal } from "@/lib/motion";
 
 const contactInfo = [
   {
@@ -29,10 +30,12 @@ const ContactSection = () => {
   return (
     <section id="contato" className="py-16 sm:py-24 bg-background" data-section="contact">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16 slide-up">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Vamos começar seu <span className="gradient-text">projeto</span>
-          </h2>
+        <div className="text-center mb-12 sm:mb-16">
+          <KineticText
+            as="h2"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+            parts={[{ text: "Vamos começar seu" }, { text: "projeto", className: "gradient-text" }]}
+          />
           <p className="text-lg sm:text-xl text-tech-gray max-w-3xl mx-auto">
             Processo simples e transparente. Em apenas 3 passos, sua ideia 
             se transforma em uma solução digital de sucesso.
@@ -41,7 +44,7 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-8 slide-up">
+          <div className="lg:col-span-2 space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-primary mb-6">Entre em Contato</h3>
               <p className="text-tech-gray leading-relaxed mb-8">
@@ -52,15 +55,14 @@ const ContactSection = () => {
 
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <Card 
-                  key={info.title}
-                  className="tech-card border-0 group hover:tech-glow transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+                <Reveal key={info.title} index={index}>
+                <Card className="tech-card border-0 group hover:tech-glow transition-all duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <info.icon className="w-6 h-6 text-white" />
+                        <DrawIcon>
+                          <info.icon className="w-6 h-6 text-white" />
+                        </DrawIcon>
                       </div>
                       <div>
                         <h4 className="font-semibold text-primary mb-1">{info.title}</h4>
@@ -70,6 +72,7 @@ const ContactSection = () => {
                     </div>
                   </CardContent>
                 </Card>
+                </Reveal>
               ))}
             </div>
 
@@ -88,7 +91,7 @@ const ContactSection = () => {
           </div>
 
           {/* Processo de Contato */}
-          <div className="lg:col-span-3 slide-up" style={{ animationDelay: '0.2s' }}>
+          <Reveal className="lg:col-span-3" index={1}>
             <Card className="tech-card border-0">
               <CardContent className="p-6 sm:p-8">
                 <h3 className="text-2xl font-bold text-primary mb-6">Como Funciona Nosso Processo</h3>
@@ -176,7 +179,7 @@ Podem me ajudar?`;
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

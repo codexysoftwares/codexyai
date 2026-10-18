@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import logo from "/logo.png";
+import { KineticText, ease } from "@/lib/motion";
 
 const scrollToContact = () =>
   document.querySelector('[data-section="contact"]')?.scrollIntoView({ behavior: "smooth" });
@@ -95,7 +96,7 @@ const HeroSection = () => {
           <div className="absolute bottom-1/4 right-1/5 w-48 h-48 sm:w-80 sm:h-80 bg-primary/20 rounded-full blur-3xl" />
         </div>
 
-        <div className="absolute inset-0 z-[1] opacity-10 pointer-events-none" style={{
+        <div className="absolute inset-0 z-[1] opacity-10 pointer-events-none grid-drift" style={{
           backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
           backgroundSize: "50px 50px",
@@ -106,24 +107,30 @@ const HeroSection = () => {
           className="relative z-20 container mx-auto px-4 sm:px-6 w-full"
         >
           <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-6">
-            <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: ease.back }}
+            >
               <img src={logo} alt="Logo Codexy" className="h-14 sm:h-16 md:h-20 w-auto mx-auto" />
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <KineticText
+              as="p"
+              onMount
+              delay={0.25}
               className="text-lg sm:text-xl lg:text-2xl text-tech-gray font-light"
-            >
-              Transformamos ideias em <span className="text-accent font-semibold">soluções digitais</span> que
-              impulsionam o futuro da sua empresa.
-            </motion.p>
+              parts={[
+                { text: "Transformamos ideias em" },
+                { text: "soluções digitais", className: "text-accent font-semibold" },
+                { text: "que impulsionam o futuro da sua empresa." },
+              ]}
+            />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.75, ease: ease.out }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
@@ -151,7 +158,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.9, ease: ease.out }}
               className="pt-1"
             >
               <p className="text-[0.65rem] sm:text-xs uppercase tracking-widest text-tech-gray/70 mb-2">

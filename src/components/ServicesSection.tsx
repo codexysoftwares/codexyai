@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Code, Smartphone, Globe, Database, Shield, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { DrawIcon, KineticText, Reveal } from "@/lib/motion";
 
 const services = [
   {
@@ -71,7 +72,9 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
       <CardContent className="p-6 sm:p-8">
         <div className="mb-6">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            <DrawIcon>
+              <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            </DrawIcon>
           </div>
           <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">{service.title}</h3>
           <p className="text-sm sm:text-base text-tech-gray leading-relaxed mb-6">{service.description}</p>
@@ -118,9 +121,11 @@ function SolutionsHorizontalTrack() {
     <div ref={containerRef} style={{ height: containerHeight }} className="relative">
       <div className="sticky top-0 h-screen overflow-hidden flex items-center bg-secondary/50">
         <div className="absolute top-12 sm:top-14 left-0 right-0 text-center z-10 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3">
-            Nossas <span className="gradient-text">Soluções</span>
-          </h2>
+          <KineticText
+            as="h2"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3"
+            parts={[{ text: "Nossas" }, { text: "Soluções", className: "gradient-text" }]}
+          />
           <p className="text-base sm:text-lg text-tech-gray max-w-2xl mx-auto">
             Um conjunto completo de serviços tecnológicos pra transformar sua visão em realidade digital.
           </p>
@@ -128,9 +133,9 @@ function SolutionsHorizontalTrack() {
 
         <motion.div ref={trackRef} style={{ x }} className="flex gap-6 pl-[6vw]">
           {services.map((service) => (
-            <div key={service.title} className="flex-shrink-0 w-[340px] sm:w-[380px]">
+            <Reveal key={service.title} className="flex-shrink-0 w-[340px] sm:w-[380px]">
               <ServiceCard service={service} />
-            </div>
+            </Reveal>
           ))}
           <div className="flex-shrink-0 w-[6vw]" />
         </motion.div>
@@ -152,10 +157,12 @@ const ServicesSection = () => {
 
       <div className="md:hidden py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Nossas <span className="gradient-text">Soluções</span>
-            </h2>
+          <div className="text-center mb-12">
+            <KineticText
+              as="h2"
+              className="text-3xl sm:text-4xl font-bold mb-6"
+              parts={[{ text: "Nossas" }, { text: "Soluções", className: "gradient-text" }]}
+            />
             <p className="text-lg text-tech-gray max-w-3xl mx-auto">
               Oferecemos um conjunto completo de serviços tecnológicos para transformar
               sua visão em realidade digital.
@@ -163,10 +170,10 @@ const ServicesSection = () => {
           </div>
 
           <div className="grid gap-6">
-            {services.map((service, index) => (
-              <div key={service.title} className="slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+            {services.map((service) => (
+              <Reveal key={service.title}>
                 <ServiceCard service={service} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

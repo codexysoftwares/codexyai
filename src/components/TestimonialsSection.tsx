@@ -1,5 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { KineticText, Pop, Reveal } from "@/lib/motion";
 
 const testimonials = [
   {
@@ -29,10 +30,12 @@ const TestimonialsSection = () => {
   return (
     <section className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16 slide-up">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            O que nossos <span className="gradient-text">clientes</span> dizem
-          </h2>
+        <div className="text-center mb-12 sm:mb-16">
+          <KineticText
+            as="h2"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+            parts={[{ text: "O que nossos" }, { text: "clientes", className: "gradient-text" }, { text: "dizem" }]}
+          />
           <p className="text-lg sm:text-xl text-tech-gray max-w-3xl mx-auto">
             A satisfação dos nossos clientes é nossa maior conquista. 
             Veja o que eles têm a dizer sobre nossos serviços.
@@ -41,19 +44,19 @@ const TestimonialsSection = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card 
-              key={testimonial.name}
-              className="tech-card border-0 relative group hover:tech-glow transition-all duration-500 slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+            <Reveal key={testimonial.name} index={index}>
+            <Card className="tech-card border-0 relative group hover:tech-glow transition-all duration-500 h-full">
               <CardContent className="p-6 sm:p-8">
                 <div className="absolute top-4 right-4 sm:top-6 sm:right-6 opacity-20 group-hover:opacity-30 transition-opacity">
                   <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
                 </div>
                 
                 <div className="flex gap-1 mb-4 sm:mb-6">
+                  {/* Estrelas acendendo uma a uma, depois que o card abre. */}
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-accent text-accent" />
+                    <Pop key={i} index={index + 3 + i}>
+                      <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-accent text-accent" />
+                    </Pop>
                   ))}
                 </div>
                 
@@ -74,6 +77,7 @@ const TestimonialsSection = () => {
                 </div>
               </CardContent>
             </Card>
+            </Reveal>
           ))}
         </div>
       </div>
