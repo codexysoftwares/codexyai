@@ -29,8 +29,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import InformacoesNavbar from "@/components/landing/InformacoesNavbar";
-import { getBlogPostBySlug, getOtherPosts, FALLBACK_COVER, type BlogPost as BlogPostData } from "@/data/blogPosts";
+import { getAllBlogPosts, getBlogPostBySlug, FALLBACK_COVER, type BlogPost as BlogPostData } from "@/data/blogPosts";
 import { landingPages, type LandingPageData } from "@/data/landingPages";
+import { selectRelatedBlogPosts } from "@/lib/relatedBlogPosts";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const SITE_URL = "https://codexy.com.br";
@@ -96,7 +97,7 @@ const BlogPost = () => {
     );
   }
 
-  const otherPosts = getOtherPosts(post.slug);
+  const otherPosts = selectRelatedBlogPosts(getAllBlogPosts(), post, { excludeSlug: post.slug });
   const relatedServicePages = getRelatedServicePages(post);
   const headings = getHeadings(post);
   const readingMinutes = estimateReadingMinutes(post);

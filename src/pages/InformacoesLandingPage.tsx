@@ -38,6 +38,7 @@ import {
 import InformacoesNavbar from "@/components/landing/InformacoesNavbar";
 import { getLandingPageBySlug, getRelatedPages, type LandingPageData } from "@/data/landingPages";
 import { getAllBlogPosts } from "@/data/blogPosts";
+import { selectRelatedBlogPosts } from "@/lib/relatedBlogPosts";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const SITE_URL = "https://codexy.com.br";
@@ -94,7 +95,10 @@ const InformacoesLandingPage = () => {
   }
 
   const { otherNichesSameLocation, otherLocationsSameNiche } = getRelatedPages(page);
-  const recentBlogPosts = getAllBlogPosts().slice(0, 3);
+  const recentBlogPosts = selectRelatedBlogPosts(getAllBlogPosts(), {
+    title: `${page.niche} ${page.headline}`,
+    excerpt: page.introParagraph,
+  });
   const readingMinutes = estimateReadingMinutes(page);
   const pageUrl = `${SITE_URL}/informacoes/${page.slug}/`;
   const shareText = encodeURIComponent(page.headline);
