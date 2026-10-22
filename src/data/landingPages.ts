@@ -152,6 +152,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "São Bernardo do Campo", uf: "SP", preposition: "em" },
       { label: "Duque de Caxias", uf: "RJ", preposition: "em" },
       { label: "Nova Iguaçu", uf: "RJ", preposition: "em" },
+      { label: "Natal", uf: "RN", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
