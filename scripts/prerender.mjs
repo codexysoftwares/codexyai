@@ -82,15 +82,6 @@ function validateUniqueMetadata(pageHtml, route) {
     return;
   }
 
-  const isNoindex = /<meta[^>]*name="robots"[^>]*content="noindex,\s*follow"/.test(pageHtml);
-
-  if (isNoindex) {
-    if (canonicalMatches.length > 0) {
-      throw new Error(`A noindex page must not include a canonical URL: ${route}`);
-    }
-    return;
-  }
-
   const canonical = canonicalMatches[0]?.[1]?.trim();
 
   if (canonicalMatches.length !== 1 || !canonical) {

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { indexableLandingPages } from "../src/data/landingPages";
+import { landingPages } from "../src/data/landingPages";
 import { blogPosts } from "../src/data/blogPosts";
 
 const SITE_URL = "https://codexy.com.br";
@@ -28,7 +28,7 @@ const blogRoutes = [
   })),
 ];
 
-const landingRoutes = indexableLandingPages.map((page) => ({
+const landingRoutes = landingPages.map((page) => ({
   path: `/informacoes/${page.slug}/`,
   priority: "0.8",
   lastmod: page.updatedAt,

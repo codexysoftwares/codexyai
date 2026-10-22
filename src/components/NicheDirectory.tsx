@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { indexableLandingPages } from "@/data/landingPages";
 
 /**
  * Achado 2026-08-18: nenhuma página de /informacoes/ era linkada a partir
@@ -57,10 +56,6 @@ const NICHES: { slug: string; label: string }[] = [
   { slug: "funilarias", label: "Funilarias" },
 ];
 
-const INDEXABLE_PAGE_BY_NICHE = new Map(
-  indexableLandingPages.map((page) => [page.nicheSlug, page])
-);
-
 const NicheDirectory = () => {
   return (
     <section className="py-16 sm:py-24 bg-background">
@@ -75,21 +70,16 @@ const NicheDirectory = () => {
         </div>
 
         <nav aria-label="Nichos atendidos" className="flex flex-wrap justify-center gap-3">
-          {NICHES.flatMap((niche) => {
-            const page = INDEXABLE_PAGE_BY_NICHE.get(niche.slug);
-            if (!page) return [];
-
-            return (
-              <a
-                key={page.slug}
-                href={`/informacoes/${page.slug}/`}
-                className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm font-medium text-tech-gray transition-colors hover:border-accent hover:bg-accent/10 hover:text-primary"
-              >
-                {niche.label}
-                <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
-              </a>
-            );
-          })}
+          {NICHES.map((niche) => (
+            <a
+              key={niche.slug}
+              href={`/informacoes/chatbot-para-${niche.slug}-sao-paulo-sp/`}
+              className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm font-medium text-tech-gray transition-colors hover:border-accent hover:bg-accent/10 hover:text-primary"
+            >
+              {niche.label}
+              <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+            </a>
+          ))}
         </nav>
       </div>
     </section>
