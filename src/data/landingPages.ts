@@ -156,6 +156,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "Santo André", uf: "SP", preposition: "em" },
       { label: "Osasco", uf: "SP", preposition: "em" },
       { label: "Sorocaba", uf: "SP", preposition: "em" },
+      { label: "Uberlândia", uf: "MG", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
