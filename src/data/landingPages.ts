@@ -158,6 +158,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "Sorocaba", uf: "SP", preposition: "em" },
       { label: "Uberlândia", uf: "MG", preposition: "em" },
       { label: "Ribeirão Preto", uf: "SP", preposition: "em" },
+      { label: "São José dos Campos", uf: "SP", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
