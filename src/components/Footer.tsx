@@ -43,9 +43,9 @@ const footerLinkHrefs: Record<string, string> = {
   "Marketing Digital e Design": "/#servicos",
   "Consultoria e Suporte": "/#servicos",
   "Sobre Nós": "/#sobre",
-  "Blog": "/blog",
+  "Blog": "/blog/",
   "Casos de Sucesso": "/#projetos",
-  Parcerias: "/parceiros/doctorchatbot",
+  Parcerias: "/parceiros/doctorchatbot/",
   "Suporte Técnico": "https://wa.me/5531991666106",
   "Contato": "/#contato",
 };
@@ -134,13 +134,13 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
-            <a href="/politica-privacidade" className="text-white/60 hover:text-accent transition-colors">
+            <a href="/politica-privacidade/" className="text-white/60 hover:text-accent transition-colors">
               Política de Privacidade
             </a>
-            <a href="/termos-uso" className="text-white/60 hover:text-accent transition-colors">
+            <a href="/termos-uso/" className="text-white/60 hover:text-accent transition-colors">
               Termos de Uso
             </a>
-            <a href="/cookies" className="text-white/60 hover:text-accent transition-colors">
+            <a href="/cookies/" className="text-white/60 hover:text-accent transition-colors">
               Cookies
             </a>
           </div>

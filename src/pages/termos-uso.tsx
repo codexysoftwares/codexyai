@@ -29,7 +29,7 @@ const TermosUso = () => (
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">5. Links Externos</h2>
     <p className="mb-4 text-tech-gray">Nosso site pode conter links para sites de terceiros. Não nos responsabilizamos pelo conteúdo, políticas ou práticas desses sites. Recomendamos que o usuário leia os termos e políticas de privacidade de cada site visitado.</p>
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">6. Privacidade</h2>
-    <p className="mb-4 text-tech-gray">O uso do site também está sujeito à nossa <a href="/politica-privacidade" className="text-accent underline">Política de Privacidade</a> e <a href="/cookies" className="text-accent underline">Política de Cookies</a>.</p>
+    <p className="mb-4 text-tech-gray">O uso do site também está sujeito à nossa <a href="/politica-privacidade/" className="text-accent underline">Política de Privacidade</a> e <a href="/cookies/" className="text-accent underline">Política de Cookies</a>.</p>
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">7. Alterações nos Termos</h2>
     <p className="mb-4 text-tech-gray">A Codexy pode alterar estes Termos de Uso a qualquer momento. As alterações serão publicadas nesta página e o uso continuado do site implica aceitação das novas condições.</p>
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">8. Legislação Aplicável</h2>

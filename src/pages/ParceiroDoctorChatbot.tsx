@@ -167,7 +167,7 @@ const ParceiroDoctorChatbot = () => (
                   variant="outline"
                   className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white"
                 >
-                  <a href="/informacoes/chatbot-para-clinicas-de-estetica-minas-gerais">
+                  <a href="/informacoes/chatbot-para-clinicas-de-estetica-belo-horizonte-mg/">
                     Ver solução para clínicas
                   </a>
                 </Button>

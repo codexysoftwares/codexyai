@@ -42,7 +42,7 @@ const PoliticaPrivacidade = () => (
       <li>Solicitar anonimização, bloqueio ou eliminação de dados desnecessários.</li>
     </ul>
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">7. Cookies e Tecnologias de Rastreamento</h2>
-    <p className="mb-4 text-tech-gray">Utilizamos cookies para melhorar a navegação, analisar o uso do site, personalizar conteúdo e anúncios. O usuário pode gerenciar as preferências de cookies no navegador. Para mais detalhes, consulte nossa <a href="/cookies" className="text-accent underline">Política de Cookies</a>.</p>
+    <p className="mb-4 text-tech-gray">Utilizamos cookies para melhorar a navegação, analisar o uso do site, personalizar conteúdo e anúncios. O usuário pode gerenciar as preferências de cookies no navegador. Para mais detalhes, consulte nossa <a href="/cookies/" className="text-accent underline">Política de Cookies</a>.</p>
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">8. Base Legal para Tratamento</h2>
     <p className="mb-4 text-tech-gray">O tratamento de dados pessoais é realizado com base no consentimento do usuário, execução de contrato, cumprimento de obrigação legal ou legítimo interesse da Codexy.</p>
     <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">9. Transferência Internacional de Dados</h2>

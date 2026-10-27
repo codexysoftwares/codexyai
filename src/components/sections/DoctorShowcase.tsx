@@ -82,7 +82,7 @@ export function DoctorShowcase() {
             Plataforma SaaS com agenda inteligente para médicos e clínicas. O chatbot automatiza agendamentos, confirmações e a comunicação com pacientes — sem intervenção manual.
           </p>
           <a
-            href="/parceiros/doctorchatbot"
+            href="/parceiros/doctorchatbot/"
             className="mt-4 inline-flex text-sm font-semibold text-accent transition-colors hover:text-accent-glow"
           >
             Empresa parceira da CODEXY

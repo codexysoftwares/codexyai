@@ -554,7 +554,7 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
       description:
         "Para operações que precisam de uma solução especializada na jornada do paciente, a DoctorChatBot combina agenda inteligente e automação de conversas pelo WhatsApp.",
       ctaLabel: "Conhecer a DoctorChatBot",
-      detailsPath: "/parceiros/doctorchatbot",
+      detailsPath: "/parceiros/doctorchatbot/",
     },
     faq: [
       {

@@ -13,9 +13,9 @@ type SitemapRoute = { path: string; priority: string; lastmod?: string };
 
 const staticRoutes: SitemapRoute[] = [
   { path: "/", priority: "1.0" },
-  { path: "/politica-privacidade", priority: "0.3" },
-  { path: "/termos-uso", priority: "0.3" },
-  { path: "/cookies", priority: "0.3" },
+  { path: "/politica-privacidade/", priority: "0.3" },
+  { path: "/termos-uso/", priority: "0.3" },
+  { path: "/cookies/", priority: "0.3" },
   { path: "/parceiros/doctorchatbot/", priority: "0.8" },
 ];
 
