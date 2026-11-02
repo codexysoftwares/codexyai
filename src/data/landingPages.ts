@@ -166,6 +166,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "Feira de Santana", uf: "BA", preposition: "em" },
       { label: "Aracaju", uf: "SE", preposition: "em" },
       { label: "Londrina", uf: "PR", preposition: "em" },
+      { label: "Juiz de Fora", uf: "MG", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
