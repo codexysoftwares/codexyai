@@ -169,6 +169,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "Juiz de Fora", uf: "MG", preposition: "em" },
       { label: "Florianópolis", uf: "SC", preposition: "em" },
       { label: "Aparecida de Goiânia", uf: "GO", preposition: "em" },
+      { label: "Serra", uf: "ES", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
