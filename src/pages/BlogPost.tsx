@@ -35,6 +35,7 @@ import { selectRelatedBlogPosts } from "@/lib/relatedBlogPosts";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const SITE_URL = "https://codexy.com.br";
+const BLOG_AUTHOR = "Lucas Magalhães";
 const DEFAULT_WHATSAPP_MESSAGE = "Olá! Li um post do blog da CODEXY e quero saber mais sobre automação de atendimento.";
 const WORDS_PER_MINUTE = 200;
 const PRIORITY_NICHES = ["padarias", "clinicas-odontologicas", "imobiliarias"];
@@ -112,8 +113,19 @@ const BlogPost = () => {
     headline: post.title,
     description: post.seo.description,
     datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    url: pageUrl,
+    mainEntityOfPage: pageUrl,
     image: ogImageUrl,
-    publisher: { "@type": "Organization", name: "CODEXY" },
+    // Autor identificado: Search Console (2026-11) pediu sinal de quem
+    // assina o conteúdo, antes só havia a organização.
+    author: { "@type": "Person", name: BLOG_AUTHOR },
+    publisher: {
+      "@type": "Organization",
+      name: "CODEXY",
+      url: `${SITE_URL}/`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+    },
   };
 
   const breadcrumbSchema = {
@@ -192,7 +204,7 @@ const BlogPost = () => {
               <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/70">
                 <span className="flex items-center gap-1.5 font-medium text-white/90">
                   <Bot className="h-4 w-4" />
-                  Equipe CODEXY
+                  Por {BLOG_AUTHOR}
                 </span>
                 <span className="flex items-center gap-1.5">
                   <CalendarDays className="h-4 w-4" />

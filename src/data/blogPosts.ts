@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
     seo: { title: "Custo de um Chatbot de WhatsApp para Pequenas Empresas | Blog CODEXY", description: "Entenda os fatores que influenciam o custo de implementar e manter um chatbot de WhatsApp para pequenas empresas." },
   },
   {
-    slug: "automcao-de-atendimento-no-whatsapp",
+    slug: "automacao-de-atendimento-no-whatsapp",
     title: "Automação de Atendimento no WhatsApp",
     excerpt: "Saiba como a CODEXY ajuda os negócios a automatizar a resposta às mensagens no WhatsApp",
     category: "WhatsApp Business, Automação",
@@ -124,8 +124,8 @@ export const blogPosts: BlogPost[] = [
     seo: { title: "Atendimento Automatizado: Sinais de que sua Empresa Precisa | Blog CODEXY", description: "Veja os sinais indicativos de que seu negócio precisa de atendimento automatizado para melhorar a experiência do cliente." },
   },
   {
-    slug: "automcao-de-atendimento-no-whatsapp-business",
-    title: "Automção de Atendimento no WhatsApp Business",
+    slug: "automacao-de-atendimento-no-whatsapp-business",
+    title: "Automação de Atendimento no WhatsApp Business",
     excerpt: "Entenda como a automação pode melhorar a experiência do cliente e reduzir o volume de mensagens no seu negócio",
     category: "WhatsApp Business, Automação",
     coverImage: "/images/blog/automcao-de-atendimento-no-whatsapp-business-cover.jpg",
