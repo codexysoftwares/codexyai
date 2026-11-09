@@ -5,12 +5,11 @@ const footerSections = [
   {
     title: "Serviços",
     links: [
-      "Desenvolvimento Web",
-      "Apps Mobile",
-      "Automação e Chatbots",
-      "Sistemas e Plataformas Personalizadas",
-      "Marketing Digital e Design",
-      "Consultoria e Suporte"
+      "Criação de Sites",
+      "Aplicativos Mobile",
+      "Chatbot e Automação de WhatsApp",
+      "Sistemas Sob Medida",
+      "Chatbot por Segmento"
     ]
   },
   {
@@ -36,12 +35,11 @@ const socialLinks = [
 ];
 
 const footerLinkHrefs: Record<string, string> = {
-  "Desenvolvimento Web": "/#servicos",
-  "Apps Mobile": "/#servicos",
-  "Automação e Chatbots": "/#servicos",
-  "Sistemas e Plataformas Personalizadas": "/#servicos",
-  "Marketing Digital e Design": "/#servicos",
-  "Consultoria e Suporte": "/#servicos",
+  "Criação de Sites": "/servicos/criacao-de-sites/",
+  "Aplicativos Mobile": "/servicos/aplicativos-mobile/",
+  "Chatbot e Automação de WhatsApp": "/servicos/chatbot-whatsapp/",
+  "Sistemas Sob Medida": "/servicos/sistemas-sob-medida/",
+  "Chatbot por Segmento": "/segmentos/",
   "Sobre Nós": "/#sobre",
   "Blog": "/blog/",
   "Casos de Sucesso": "/#projetos",
@@ -117,7 +115,7 @@ const Footer = () => {
 
           {/* Footer Links */}
           {footerSections.map((section) => (
-            <div key={section.title} className="hidden sm:block">
+            <div key={section.title} className="">
               <h4 className="font-semibold mb-4 sm:mb-6 text-base sm:text-lg">{section.title}</h4>
               <ul className="space-y-2 sm:space-y-3">
                 {section.links.map((link) => (

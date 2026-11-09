@@ -81,6 +81,12 @@ const NicheDirectory = () => {
             </a>
           ))}
         </nav>
+
+        <p className="mt-8 text-center">
+          <a href="/segmentos/" className="font-semibold text-accent underline-offset-4 hover:underline">
+            Ver todos os segmentos e cidades atendidas
+          </a>
+        </p>
       </div>
     </section>
   );

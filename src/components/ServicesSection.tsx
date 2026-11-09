@@ -6,6 +6,7 @@ import { DrawIcon, KineticText, Reveal } from "@/lib/motion";
 
 const services = [
   {
+    href: "/servicos/criacao-de-sites/",
     icon: Code,
     title: "Desenvolvimento Web",
     description: "Sites institucionais, one page, landing pages, lojas virtuais, blogs, portais e portfólios digitais.",
@@ -16,6 +17,7 @@ const services = [
     ]
   },
   {
+    href: "/servicos/aplicativos-mobile/",
     icon: Smartphone,
     title: "Apps Mobile",
     description: "Aplicativos nativos e híbridos para iOS e Android, desenvolvidos sob medida para sua necessidade.",
@@ -26,6 +28,7 @@ const services = [
     ]
   },
   {
+    href: "/servicos/chatbot-whatsapp/",
     icon: Zap,
     title: "Automação e Chatbots",
     description: "Automatize processos e atenda clientes em múltiplos canais como WhatsApp, Instagram, e-mail e CRM.",
@@ -36,6 +39,7 @@ const services = [
     ]
   },
   {
+    href: "/servicos/sistemas-sob-medida/",
     icon: Database,
     title: "Sistemas e Plataformas Personalizadas",
     description: "Soluções sob medida como sistemas de agendamento, diário de obra, CRM, estoque, OS e plataformas para nichos específicos.",
@@ -45,6 +49,7 @@ const services = [
     ]
   },
   {
+    href: "/servicos/",
     icon: Globe,
     title: "Marketing Digital e Design",
     description: "Impulsione sua marca com identidade visual, social media, tráfego pago e branding.",
@@ -55,6 +60,7 @@ const services = [
     ]
   },
   {
+    href: "/servicos/",
     icon: Shield,
     title: "Consultoria e Suporte",
     description: "Apoio completo com diagnóstico, mentoria, suporte técnico, hospedagem e treinamentos.",
@@ -76,7 +82,9 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
               <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
             </DrawIcon>
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">{service.title}</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">
+            <a href={service.href} className="hover:text-accent">{service.title}</a>
+          </h3>
           <p className="text-sm sm:text-base text-tech-gray leading-relaxed mb-6">{service.description}</p>
         </div>
         <div className="space-y-2">

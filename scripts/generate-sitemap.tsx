@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { landingPages } from "../src/data/landingPages";
 import { blogPosts } from "../src/data/blogPosts";
+import { servicePages } from "../src/data/services";
+import { segments } from "../src/data/segments";
 
 const SITE_URL = "https://codexy.com.br";
 
@@ -11,8 +13,24 @@ const distDir = path.resolve(__dirname, "../dist");
 
 type SitemapRoute = { path: string; priority: string; lastmod?: string };
 
+// Data fixa da última revisão real do conteúdo (não a do build: lastmod que muda
+// a cada deploy perde credibilidade com o Google). Atualizar ao revisar o texto.
+const BUILD_DATE = "2026-11-09";
+
 const staticRoutes: SitemapRoute[] = [
-  { path: "/", priority: "1.0" },
+  { path: "/", priority: "1.0", lastmod: BUILD_DATE },
+  { path: "/servicos/", priority: "0.9", lastmod: BUILD_DATE },
+  ...servicePages.map((service) => ({
+    path: `/servicos/${service.slug}/`,
+    priority: "0.9",
+    lastmod: BUILD_DATE,
+  })),
+  { path: "/segmentos/", priority: "0.8", lastmod: BUILD_DATE },
+  ...segments.map((segment) => ({
+    path: `/segmentos/${segment.slug}/`,
+    priority: "0.7",
+    lastmod: BUILD_DATE,
+  })),
   { path: "/politica-privacidade/", priority: "0.3" },
   { path: "/termos-uso/", priority: "0.3" },
   { path: "/cookies/", priority: "0.3" },

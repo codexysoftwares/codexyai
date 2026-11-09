@@ -5,12 +5,18 @@ import { HelmetProvider, type HelmetServerState } from "react-helmet-async";
 import { AppProviders, AppRoutes } from "./App";
 import { landingPages } from "./data/landingPages";
 import { blogPosts } from "./data/blogPosts";
+import { servicePages } from "./data/services";
+import { segments } from "./data/segments";
 
 export const prerenderRoutes = [
   "/",
   "/politica-privacidade",
   "/termos-uso",
   "/cookies",
+  "/servicos",
+  ...servicePages.map((service) => `/servicos/${service.slug}`),
+  "/segmentos",
+  ...segments.map((segment) => `/segmentos/${segment.slug}`),
   ...landingPages.map((page) => `/informacoes/${page.slug}`),
   "/blog",
   ...blogPosts.map((post) => `/blog/${post.slug}`),

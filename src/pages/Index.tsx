@@ -15,8 +15,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <PageSeo
-        title="CODEXY — Chatbot de WhatsApp e Soluções Digitais para Empresas"
-        description="A CODEXY desenvolve chatbot de WhatsApp, automação de atendimento, sites e apps sob medida — pra sua empresa atender melhor e vender mais, 24 horas por dia."
+        title="Sites, Apps e Chatbot de WhatsApp sob Medida | CODEXY"
+        description="CODEXY, de Belo Horizonte: criação de sites, aplicativos, chatbot de WhatsApp e sistemas sob medida para a sua empresa atender melhor e vender mais."
         path="/"
         keywords="chatbot whatsapp, automação de atendimento, desenvolvimento web, aplicativos mobile, chatbots, tecnologia"
         imageAlt="Logo da CODEXY"

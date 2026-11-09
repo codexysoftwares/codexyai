@@ -63,10 +63,16 @@ const InformacoesNavbar = ({ onWhatsAppClick }: InformacoesNavbarProps) => (
           <a href="/" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
             Início
           </a>
-          <a href="/#servicos" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
+          <a href="/servicos/" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
             Serviços
           </a>
-          <a href="/#contact" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
+          <a href="/segmentos/" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
+            Segmentos
+          </a>
+          <a href="/blog/" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
+            Blog
+          </a>
+          <a href="/#contato" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
             Contato
           </a>
         </div>

@@ -15,6 +15,10 @@ import InformacoesLandingPage from "./pages/InformacoesLandingPage";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import ParceiroDoctorChatbot from "./pages/ParceiroDoctorChatbot";
+import ServicosIndex from "./pages/ServicosIndex";
+import ServicoPage from "./pages/ServicoPage";
+import SegmentosIndex from "./pages/SegmentosIndex";
+import SegmentoPage from "./pages/SegmentoPage";
 import WhatsAppFloatButton from "./components/WhatsAppFloatButton";
 import Preview1Melhorada from "./pages/previews/Preview1Melhorada";
 import Preview2Console from "./pages/previews/Preview2Console";
@@ -51,6 +55,10 @@ export const AppRoutes = () => (
       <Route path="/termos-uso" element={<TermosUso />} />
       <Route path="/cookies" element={<Cookies />} />
       <Route path="/parceiros/doctorchatbot" element={<ParceiroDoctorChatbot />} />
+      <Route path="/servicos" element={<ServicosIndex />} />
+      <Route path="/servicos/:slug" element={<ServicoPage />} />
+      <Route path="/segmentos" element={<SegmentosIndex />} />
+      <Route path="/segmentos/:slug" element={<SegmentoPage />} />
       <Route path="/informacoes/:slug" element={<InformacoesLandingPage />} />
       <Route path="/blog" element={<BlogIndex />} />
       <Route path="/blog/:slug" element={<BlogPost />} />

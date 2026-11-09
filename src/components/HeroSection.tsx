@@ -116,16 +116,23 @@ const HeroSection = () => {
             </motion.div>
 
             <KineticText
-              as="p"
+              as="h1"
               onMount
               delay={0.25}
-              className="text-lg sm:text-xl lg:text-2xl text-tech-gray font-light"
+              className="text-xl sm:text-2xl lg:text-3xl text-tech-gray font-light"
               parts={[
-                { text: "Transformamos ideias em" },
-                { text: "soluções digitais", className: "text-accent font-semibold" },
-                { text: "que impulsionam o futuro da sua empresa." },
+                { text: "Sites, apps, " },
+                { text: "chatbot de WhatsApp", className: "text-accent font-semibold" },
+                { text: "e sistemas sob medida para a sua empresa atender melhor e vender mais." },
               ]}
             />
+
+            <nav aria-label="Serviços da CODEXY" className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm font-semibold">
+              <a href="/servicos/criacao-de-sites/" className="text-primary/80 underline-offset-4 hover:text-accent hover:underline">Criação de sites</a>
+              <a href="/servicos/aplicativos-mobile/" className="text-primary/80 underline-offset-4 hover:text-accent hover:underline">Aplicativos</a>
+              <a href="/servicos/chatbot-whatsapp/" className="text-primary/80 underline-offset-4 hover:text-accent hover:underline">Chatbot de WhatsApp</a>
+              <a href="/servicos/sistemas-sob-medida/" className="text-primary/80 underline-offset-4 hover:text-accent hover:underline">Sistemas sob medida</a>
+            </nav>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
