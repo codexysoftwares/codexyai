@@ -1,0 +1,252 @@
+{
+ "padarias": [
+  {
+   "id": "116945",
+   "label": "fabricação de produtos de panificação"
+  },
+  {
+   "id": "117444",
+   "label": "comércio varejista de produtos de padaria, laticínio e doces"
+  }
+ ],
+ "confeitarias": [
+  {
+   "id": "116945",
+   "label": "fabricação de produtos de panificação"
+  },
+  {
+   "id": "117444",
+   "label": "comércio varejista de produtos de padaria, laticínio e doces"
+  }
+ ],
+ "clinicas-de-estetica": [
+  {
+   "id": "117885",
+   "label": "cabeleireiros e outras atividades de tratamento de beleza"
+  }
+ ],
+ "barbearias": [
+  {
+   "id": "117885",
+   "label": "cabeleireiros e outras atividades de tratamento de beleza"
+  }
+ ],
+ "saloes-de-beleza": [
+  {
+   "id": "117885",
+   "label": "cabeleireiros e outras atividades de tratamento de beleza"
+  }
+ ],
+ "construtoras": [
+  {
+   "id": "117334",
+   "label": "construção de edifícios"
+  }
+ ],
+ "empresas-de-reforma": [
+  {
+   "id": "117359",
+   "label": "obras de acabamento"
+  }
+ ],
+ "academias": [
+  {
+   "id": "117856",
+   "label": "atividades de condicionamento físico"
+  }
+ ],
+ "estudios-de-pilates-e-yoga": [
+  {
+   "id": "117856",
+   "label": "atividades de condicionamento físico"
+  }
+ ],
+ "acaiterias": [
+  {
+   "id": "117551",
+   "label": "restaurantes e outros estabelecimentos de alimentação e bebidas"
+  }
+ ],
+ "hamburguerias": [
+  {
+   "id": "117551",
+   "label": "restaurantes e outros estabelecimentos de alimentação e bebidas"
+  }
+ ],
+ "marmitarias": [
+  {
+   "id": "117551",
+   "label": "restaurantes e outros estabelecimentos de alimentação e bebidas"
+  },
+  {
+   "id": "117554",
+   "label": "catering, bufê e outros serviços de comida preparada"
+  }
+ ],
+ "pizzarias": [
+  {
+   "id": "117551",
+   "label": "restaurantes e outros estabelecimentos de alimentação e bebidas"
+  }
+ ],
+ "restaurantes": [
+  {
+   "id": "117551",
+   "label": "restaurantes e outros estabelecimentos de alimentação e bebidas"
+  }
+ ],
+ "buffets-e-casas-de-festa": [
+  {
+   "id": "117554",
+   "label": "catering, bufê e outros serviços de comida preparada"
+  }
+ ],
+ "decoracao-de-festas": [
+  {
+   "id": "117769",
+   "label": "organização de eventos, exceto culturais e esportivos"
+  }
+ ],
+ "agencias-de-turismo": [
+  {
+   "id": "117740",
+   "label": "agências de viagens"
+  }
+ ],
+ "autoescolas": [
+  {
+   "id": "117809",
+   "label": "atividades de ensino não especificadas anteriormente (classe que inclui as autoescolas)"
+  }
+ ],
+ "reforco-escolar": [
+  {
+   "id": "117809",
+   "label": "atividades de ensino não especificadas anteriormente (classe que inclui reforço escolar)"
+  }
+ ],
+ "cursos-tecnicos": [
+  {
+   "id": "117801",
+   "label": "educação profissional de nível técnico"
+  }
+ ],
+ "escolas-de-idiomas": [
+  {
+   "id": "117808",
+   "label": "ensino de idiomas"
+  }
+ ],
+ "clinicas-odontologicas": [
+  {
+   "id": "117818",
+   "label": "atenção ambulatorial executada por médicos e odontólogos"
+  }
+ ],
+ "clinicas-veterinarias": [
+  {
+   "id": "117713",
+   "label": "atividades veterinárias"
+  }
+ ],
+ "corretores-de-seguros": [
+  {
+   "id": "117662",
+   "label": "corretores e agentes de seguros, previdência complementar e saúde"
+  }
+ ],
+ "dedetizadoras": [
+  {
+   "id": "117758",
+   "label": "imunização e controle de pragas urbanas"
+  }
+ ],
+ "diaristas-e-limpeza-residencial": [
+  {
+   "id": "117757",
+   "label": "limpeza em prédios e em domicílios"
+  }
+ ],
+ "escritorios-de-advocacia": [
+  {
+   "id": "117676",
+   "label": "atividades jurídicas, exceto cartórios"
+  }
+ ],
+ "escritorios-de-contabilidade": [
+  {
+   "id": "117679",
+   "label": "contabilidade, consultoria e auditoria contábil e tributária"
+  }
+ ],
+ "fotografos-de-eventos": [
+  {
+   "id": "117708",
+   "label": "atividades fotográficas e similares"
+  }
+ ],
+ "imobiliarias": [
+  {
+   "id": "117671",
+   "label": "intermediação na compra, venda e aluguel de imóveis"
+  }
+ ],
+ "instaladores-de-ar-condicionado": [
+  {
+   "id": "117356",
+   "label": "instalações hidráulicas e de sistemas de ventilação e refrigeração"
+  }
+ ],
+ "oficinas-mecanicas": [
+  {
+   "id": "117369",
+   "label": "manutenção e reparação de veículos automotores"
+  }
+ ],
+ "funilarias": [
+  {
+   "id": "117369",
+   "label": "manutenção e reparação de veículos automotores (classe que inclui funilaria)"
+  }
+ ],
+ "lava-rapidos": [
+  {
+   "id": "117884",
+   "label": "lavanderias, tinturarias e toalheiros"
+  }
+ ],
+ "estetica-automotiva": [
+  {
+   "id": "117369",
+   "label": "manutenção e reparação de veículos automotores (classe que inclui lavagem e polimento)"
+  }
+ ],
+ "pousadas": [
+  {
+   "id": "117546",
+   "label": "hotéis e similares"
+  },
+  {
+   "id": "117548",
+   "label": "outros tipos de alojamento"
+  }
+ ],
+ "escritorios-de-arquitetura": [
+  {
+   "id": "117687",
+   "label": "serviços de arquitetura"
+  }
+ ],
+ "jardinagem-e-paisagismo": [
+  {
+   "id": "117761",
+   "label": "atividades paisagísticas"
+  }
+ ],
+ "locacao-de-andaimes": [
+  {
+   "id": "117726",
+   "label": "aluguel de máquinas e equipamentos para construção sem operador"
+  }
+ ]
+}

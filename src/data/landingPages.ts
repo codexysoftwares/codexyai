@@ -1,3 +1,10 @@
+import {
+  buildLocalInsight,
+  compareByProximity,
+  LOCAL_DATA_UPDATED_AT,
+  type LocalInsight,
+} from "./localInsights";
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -42,6 +49,8 @@ export interface LandingPageData {
   /** Data de revisão substancial, usada no sitemap somente quando a página
    * recebeu conteúdo próprio além do template programático. */
   updatedAt?: string;
+  /** Dados oficiais da cidade (IBGE) e texto derivado deles; ver localInsights.ts. */
+  localInsight?: LocalInsight;
   partner?: PartnerRecommendation;
   whatsappMessage: string;
   seo: {
@@ -1735,7 +1744,7 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
   },
   {
     nicheSlug: "hamburguerias",
-    niche: "Hambúrguerias",
+    niche: "Hamburguerias",
     eyebrow: "Chatbot para Hamburguerias",
     heroImage: "/images/landing/hamburguerias-hero.jpg",
     heroImageAlt: "Funcionários atendendo ao público e utilizando um smartphone com o aplicativo do WhatsApp aberto, em uma hamburgueria lotada.",
@@ -1859,14 +1868,14 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
   },
   {
     nicheSlug: "marmitarias",
-    niche: "Marmitárias",
-    eyebrow: "Chatbot para Marmitárias",
+    niche: "Marmitarias",
+    eyebrow: "Chatbot para Marmitarias",
     heroImage: "/images/landing/marmitarias-hero.jpg",
     heroImageAlt: "Uma marmitaria com funcionários atendendo ao cliente enquanto um chatbot é exibido em um smartphone",
     ogImage: "/images/og/marmitarias-og.jpg",
     subheadline: "Automatize pedidos, agendamentos e atendimento de forma eficiente",
     painPoints: [
-      { title: "Dificuldade em gerenciar pedidos", description: "Marmitárias enfrentam dificuldade em gerenciar pedidos e agendamentos" },
+      { title: "Dificuldade em gerenciar pedidos", description: "Marmitarias enfrentam dificuldade em gerenciar pedidos e agendamentos" },
       { title: "Falta de tempo para atender clientes", description: "Muitas vezes, as marmitárias não têm tempo suficiente para atender aos clientes" },
       { title: "Dificuldade em manter a organização", description: "A gestão de pedidos e agendamentos pode ser caótica e difícil de gerenciar" },
     ],
@@ -1882,10 +1891,10 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
       { question: "Posso personalizar o chatbot para atender às necessidades da minha marmitaria?", answer: "Sim, o chatbot pode ser personalizado para atender às necessidades específicas da sua marmitária" },
       { question: "Qual é a garantia de sucesso do chatbot?", answer: "Não garantimos resultado específico, mas o chatbot automatiza tarefas repetitivas de atendimento e pedido, liberando tempo pra você focar no preparo das marmitas." },
     ],
-    headline: (state) => `Chatbot para Marmitárias ${state.in}`,
+    headline: (state) => `Chatbot para Marmitarias ${state.in}`,
     introParagraph: (state) => `A CODEXY oferece uma solução inovadora para as marmitárias do estado ${state.in}, permitindo que elas gerenciem pedidos e agendamentos de forma mais eficiente. Com o chatbot, os clientes podem ser atendidos rapidamente e a gestão da marmitaria fica mais organizada.`,
     whatsappMessage: (state) => `Olá! Vi a página sobre chatbot para marmitárias ${state.in} e quero saber mais sobre como implantar no meu negócio.`,
-    seoTitle: (state) => `Chatbot para Marmitárias ${state.seoIn} | CODEXY`,
+    seoTitle: (state) => `Chatbot para Marmitarias ${state.seoIn} | CODEXY`,
     seoDescription: (state) => `Melhore a gestão da sua marmitaria com o chatbot da CODEXY, uma solução inovadora para automação de pedidos e agendamentos ${state.seoIn}. Fale com a CODEXY.`,
   },
   {
@@ -1952,8 +1961,8 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
   },
   {
     nicheSlug: "pizzarias",
-    niche: "Pizzárias",
-    eyebrow: "Chatbot para Pizzárias",
+    niche: "Pizzarias",
+    eyebrow: "Chatbot para Pizzarias",
     heroImage: "/images/landing/pizzarias-hero.jpg",
     heroImageAlt: "Pizzaria com chatbot atendendo a clientes via WhatsApp",
     ogImage: "/images/og/pizzarias-og.jpg",
@@ -1975,10 +1984,10 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
       { question: "Posso personalizar o conteúdo do chatbot?", answer: "Sim, é possível personalizar o conteúdo do chatbot para se adequar às necessidades específicas da sua pizzaria" },
       { question: "Qual é o custo de implantação de um chatbot em minha pizzaria?", answer: "O custo é acessível e pode ser discutido com os especialistas da CODEXY" },
     ],
-    headline: (state) => `Chatbot para Pizzárias ${state.in}`,
+    headline: (state) => `Chatbot para Pizzarias ${state.in}`,
     introParagraph: (state) => `A CODEXY oferece soluções de chatbot personalizadas para pizzarias como a sua, ${state.in}. Com o nosso chatbot, você pode automatizar pedidos e agendamentos, reduzir o tempo gasto com atendimento e melhorar a experiência do cliente. Além disso, podemos ajudar a aumentar a eficiência no gerenciamento de pedidos e entregas, reduzindo erros e atrasos. Contamos com a expertise para implantar um chatbot na sua pizzaria ${state.in}.`,
     whatsappMessage: (state) => `Olá! Vi a página sobre chatbot para pizzárias ${state.in} e quero saber mais sobre como implantar no meu negócio.`,
-    seoTitle: (state) => `Chatbot para Pizzárias ${state.seoIn} | CODEXY`,
+    seoTitle: (state) => `Chatbot para Pizzarias ${state.seoIn} | CODEXY`,
     seoDescription: (state) => `Melhore sua experiência de cliente com um chatbot personalizado em sua pizzaria ${state.seoIn}, Fale com a CODEXY.`,
   },
   {
@@ -2587,6 +2596,14 @@ function buildLandingPage(template: NicheTemplate, state: StateInfo): LandingPag
   const seed = hashSeed(`${template.nicheSlug}:${state.slug}`);
   const priorityOverride = PRIORITY_PAGE_OVERRIDES[`${template.nicheSlug}:${state.slug}`];
   const productSlug = template.productSlug ?? "chatbot";
+  const localInsight = buildLocalInsight({
+    nicheSlug: template.nicheSlug,
+    niche: template.niche,
+    citySlug: state.slug,
+    cityIn: state.in,
+    seed,
+  });
+  const baseFaq = priorityOverride?.faq ?? pickVariant(template.faqVariants, template.faq, seed);
   return {
     slug: `${productSlug}-para-${template.nicheSlug}-${state.slug}`,
     service: productSlug,
@@ -2607,8 +2624,11 @@ function buildLandingPage(template: NicheTemplate, state: StateInfo): LandingPag
       priorityOverride?.painPoints ?? pickVariant(template.painPointsVariants, template.painPoints, seed),
     benefits:
       priorityOverride?.benefits ?? pickVariant(template.benefitsVariants, template.benefits, seed),
-    faq: priorityOverride?.faq ?? pickVariant(template.faqVariants, template.faq, seed),
-    updatedAt: priorityOverride?.updatedAt,
+    // FAQ da cidade (número do IBGE e atendimento) vem junto com o do nicho,
+    // e por isso também entra no FAQPage do JSON-LD.
+    faq: [...baseFaq, ...(localInsight?.faq ?? [])],
+    updatedAt: priorityOverride?.updatedAt ?? (localInsight ? LOCAL_DATA_UPDATED_AT : undefined),
+    localInsight,
     partner: template.partner,
     whatsappMessage: template.whatsappMessage(state),
     seo: {
@@ -2646,8 +2666,11 @@ export function getRelatedPages(page: LandingPageData): {
     (p) => p.locationSlug === page.locationSlug && p.nicheSlug !== page.nicheSlug
   );
 
+  // Cidades da mesma região/UF primeiro: link entre vizinhas faz mais
+  // sentido pro leitor do que as 8 primeiras da lista.
   const otherLocationsSameNiche = landingPages
     .filter((p) => p.nicheSlug === page.nicheSlug && p.locationSlug !== page.locationSlug)
+    .sort((a, b) => compareByProximity(page.locationSlug, a.locationSlug, b.locationSlug))
     .slice(0, 8);
 
   return { otherNichesSameLocation, otherLocationsSameNiche };

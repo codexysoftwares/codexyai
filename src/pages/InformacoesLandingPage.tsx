@@ -69,6 +69,7 @@ const DELIVERABLES = [
 function estimateReadingMinutes(page: LandingPageData): number {
   const words = [
     page.introParagraph,
+    ...(page.localInsight?.paragraphs ?? []),
     ...page.painPoints.flatMap((p) => [p.title, p.description]),
     ...page.benefits.flatMap((b) => [b.title, b.description]),
     ...page.faq.flatMap((f) => [f.question, f.answer]),
@@ -263,6 +264,30 @@ const InformacoesLandingPage = () => {
             <p>É dar mais tempo pro que realmente importa: o cliente na sua frente.</p>
           </blockquote>
 
+          {page.localInsight && (
+            <div className="mt-10">
+              <h2 id="panorama-local" className="scroll-mt-24 text-2xl font-bold text-primary">
+                {page.localInsight.heading}
+              </h2>
+              {page.localInsight.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)} className="mt-4 text-base leading-relaxed text-tech-gray">
+                  {paragraph}
+                </p>
+              ))}
+              <dl className="mt-6 grid gap-3 sm:grid-cols-2">
+                {page.localInsight.facts.map((fact) => (
+                  <div key={fact.label} className="rounded-xl border border-border bg-secondary/40 p-4">
+                    <dt className="text-xs font-medium uppercase tracking-wide text-tech-gray">{fact.label}</dt>
+                    <dd className="mt-1 text-lg font-semibold text-primary">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-4 text-xs text-tech-gray">
+                Fontes: {page.localInsight.sources.join("; ")}. Revisado por Lucas Magalhães.
+              </p>
+            </div>
+          )}
+
           <nav aria-label="Sumário" className="mt-8 rounded-xl border border-border bg-secondary/40 p-5">
             <div className="mb-3 flex items-center justify-between gap-3 text-sm font-semibold text-primary">
               <span className="flex items-center gap-2">
@@ -275,6 +300,13 @@ const InformacoesLandingPage = () => {
               </span>
             </div>
             <ol className="space-y-1.5 text-sm">
+              {page.localInsight && (
+                <li>
+                  <a href="#panorama-local" className="text-tech-gray transition-colors hover:text-primary">
+                    {page.niche} {page.stateIn} em números
+                  </a>
+                </li>
+              )}
               <li>
                 <a href="#desafios" className="text-tech-gray transition-colors hover:text-primary">
                   Desafios comuns em {page.niche.toLowerCase()}
