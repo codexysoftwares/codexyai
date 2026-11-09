@@ -1296,16 +1296,6 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
       { title: "Aumento da satisfação do paciente", description: "Pacientes podem agendar consultas e realizar pedidos de forma rápida e fácil." },
       { title: "Redução dos custos operacionais", description: "O uso de recursos pode ser otimizado com a automatização de tarefas." },
     ],
-    partner: {
-      name: "DoctorChatBot",
-      url: "https://doctorchatbot.com.br/especialidades/clinicas-odontologicas/",
-      eyebrow: "Parceiro especializado em saúde",
-      title: "Agenda e confirmação de consulta para clínicas odontológicas",
-      description:
-        "Para consultórios que precisam de uma solução pronta para a jornada do paciente, o DoctorChatBot, parceiro da CODEXY, combina agenda inteligente, confirmação automática e lembretes pelo WhatsApp.",
-      ctaLabel: "Conhecer o DoctorChatBot",
-      detailsPath: "/parceiros/doctorchatbot/",
-    },
     faq: [
       { question: "Como funciona o chatbot?", answer: "O chatbot é um software que pode ser integrado ao WhatsApp e outros canais para fornecer informações e realizar tarefas automática e personalizada." },
       { question: "Qual é a vantagem de usar um chatbot em vez de um funcionário?", answer: "Os chatbots podem trabalhar 24 horas por dia, sete dias por semana sem precisar de descanso ou folga." },
@@ -1337,16 +1327,6 @@ const NICHE_TEMPLATES: NicheTemplate[] = [
       { title: "Melhoria no gerenciamento de pedidos de consultas", description: "O chatbot da CODEXY permite que os proprietários gerenciem os pedidos de consultas de forma eficiente e organizada, reduzindo a chance de atrasos ou perda de clientes." },
       { title: "Aumento na satisfação do cliente", description: "Com o atendimento ao cliente automatizado, os clientes têm acesso rápido às informações necessárias, aumentando a satisfação com a clínica veterinária." },
     ],
-    partner: {
-      name: "DoctorChatBot",
-      url: "https://doctorchatbot.com.br/especialidades/clinicas-veterinarias/",
-      eyebrow: "Parceiro especializado em saúde",
-      title: "Agenda e lembretes automáticos para clínicas veterinárias",
-      description:
-        "Para clínicas que querem automatizar agendamento, confirmação e lembrete de retorno ou vacina, o DoctorChatBot, parceiro da CODEXY, cuida da agenda pelo WhatsApp.",
-      ctaLabel: "Conhecer o DoctorChatBot",
-      detailsPath: "/parceiros/doctorchatbot/",
-    },
     faq: [
       { question: "Como funciona o chatbot?", answer: "O chatbot da CODEXY é um sistema de automação que pode ser integrado ao seu WhatsApp e atende perguntas frequentes, agendamentos e pedidos de consultas de forma eficiente." },
       { question: "Posso personalizar as respostas do chatbot?", answer: "Sim, é possível personalizar as respostas do chatbot para que sejam adaptadas às necessidades específicas da sua clínica veterinária." },
