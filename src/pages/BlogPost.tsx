@@ -100,6 +100,9 @@ const BlogPost = () => {
 
   const otherPosts = selectRelatedBlogPosts(getAllBlogPosts(), post, { excludeSlug: post.slug });
   const relatedServicePages = getRelatedServicePages(post);
+  const isHealthTopic = /cl[ií]nica|consult[oó]rio|paciente|sa[uú]de|odonto|dentist|veterin|m[eé]dic|psic|nutri|fisio|est[eé]tica/i.test(
+    `${post.title} ${post.category} ${post.excerpt}`
+  );
   const headings = getHeadings(post);
   const readingMinutes = estimateReadingMinutes(post);
   const pageUrl = `${SITE_URL}/blog/${post.slug}/`;
@@ -413,6 +416,33 @@ const BlogPost = () => {
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Falar no WhatsApp
               </Button>
+            </div>
+
+            {/* Ecossistema CODEXY: menção aos outros sites em todo post; nos
+                assuntos de saúde, o DoctorChatBot vem em destaque. */}
+            <div className="rounded-xl border border-border bg-secondary/40 p-5 text-sm">
+              <p className="mb-2 font-semibold text-primary">Ecossistema CODEXY</p>
+              {isHealthTopic ? (
+                <p className="text-tech-gray">
+                  Para clínicas e consultórios, o{" "}
+                  <a href="https://doctorchatbot.com.br/" target="_blank" rel="noopener" className="font-semibold text-primary hover:underline">
+                    DoctorChatBot
+                  </a>
+                  , parceiro da CODEXY, automatiza agenda, confirmação de consulta e lembretes pelo WhatsApp.
+                </p>
+              ) : (
+                <p className="text-tech-gray">
+                  Para clínicas, o{" "}
+                  <a href="https://doctorchatbot.com.br/" target="_blank" rel="noopener" className="font-semibold text-primary hover:underline">
+                    DoctorChatBot
+                  </a>
+                  , parceiro da CODEXY, cuida da agenda pelo WhatsApp. Para quem quer aprender a programar, o{" "}
+                  <a href="https://trilhadev.app.br/" target="_blank" rel="noopener" className="font-semibold text-primary hover:underline">
+                    TrilhaDev
+                  </a>{" "}
+                  é a plataforma gratuita mantida pela CODEXY.
+                </p>
+              )}
             </div>
 
             {relatedServicePages.length > 0 && (

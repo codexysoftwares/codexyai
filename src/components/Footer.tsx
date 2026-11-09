@@ -64,8 +64,22 @@ const Footer = () => {
             </div>
             
             <p className="text-white/80 leading-relaxed max-w-md">
-              Transformamos ideias em soluções digitais inovadoras. Nossa missão é 
+              Transformamos ideias em soluções digitais inovadoras. Nossa missão é
               impulsionar o crescimento das empresas através da tecnologia.
+            </p>
+
+            {/* Ecossistema CODEXY: menção visível em todas as páginas, com
+                link normal (não é parceria paga). */}
+            <p className="text-white/70 text-sm leading-relaxed max-w-md">
+              A CODEXY mantém o{" "}
+              <a href="https://trilhadev.app.br/" target="_blank" rel="noopener" className="font-semibold text-white hover:text-accent">
+                TrilhaDev
+              </a>
+              , plataforma gratuita para aprender a programar, e é parceira do{" "}
+              <a href="https://doctorchatbot.com.br/" target="_blank" rel="noopener" className="font-semibold text-white hover:text-accent">
+                DoctorChatBot
+              </a>
+              , agenda e atendimento automático por WhatsApp para clínicas.
             </p>
             
             {/* Contact Info */}

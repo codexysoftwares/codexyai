@@ -444,7 +444,7 @@ const InformacoesLandingPage = () => {
                 </div>
 
                 <Button asChild size="lg" variant="secondary" className="font-semibold">
-                  <a href={page.partner.url} target="_blank" rel="noopener nofollow sponsored">
+                  <a href={page.partner.url} target="_blank" rel="noopener">
                     {page.partner.ctaLabel}
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>

@@ -156,7 +156,7 @@ const ParceiroDoctorChatbot = () => (
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button asChild size="lg" variant="secondary" className="font-semibold">
-                  <a href={PARTNER_URL} target="_blank" rel="noopener nofollow sponsored">
+                  <a href={PARTNER_URL} target="_blank" rel="noopener">
                     Conhecer a DoctorChatBot
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
@@ -244,7 +244,7 @@ const ParceiroDoctorChatbot = () => (
                 </p>
               </div>
               <Button asChild size="lg" className="font-semibold">
-                <a href={PARTNER_URL} target="_blank" rel="noopener nofollow sponsored">
+                <a href={PARTNER_URL} target="_blank" rel="noopener">
                   Acessar site oficial
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
