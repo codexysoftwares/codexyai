@@ -180,6 +180,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "Aparecida de Goiânia", uf: "GO", preposition: "em" },
       { label: "Serra", uf: "ES", preposition: "em" },
       { label: "Campos dos Goytacazes", uf: "RJ", preposition: "em" },
+      { label: "Belford Roxo", uf: "RJ", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
