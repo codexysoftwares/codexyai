@@ -20,6 +20,7 @@ import ServicoPage from "./pages/ServicoPage";
 import SegmentosIndex from "./pages/SegmentosIndex";
 import SegmentoPage from "./pages/SegmentoPage";
 import WhatsAppFloatButton from "./components/WhatsAppFloatButton";
+import EbookPopup from "./components/EbookPopup";
 import Preview1Melhorada from "./pages/previews/Preview1Melhorada";
 import Preview2Console from "./pages/previews/Preview2Console";
 import Preview3Vitrine from "./pages/previews/Preview3Vitrine";
@@ -77,6 +78,7 @@ export const AppRoutes = () => (
       <Route path="*" element={<NotFound />} />
     </Routes>
     <WhatsAppFloatButton />
+    <EbookPopup />
   </>
 );
 

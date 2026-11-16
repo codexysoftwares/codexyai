@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   ArrowLeft,
-  Bot,
   CalendarDays,
   Clock,
   Link2,
@@ -35,7 +34,7 @@ import { selectRelatedBlogPosts } from "@/lib/relatedBlogPosts";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const SITE_URL = "https://codexy.com.br";
-const BLOG_AUTHOR = "Lucas Magalhães";
+const BLOG_AUTHOR = "CODEXY";
 const DEFAULT_WHATSAPP_MESSAGE = "Olá! Li um post do blog da CODEXY e quero saber mais sobre automação de atendimento.";
 const WORDS_PER_MINUTE = 200;
 const PRIORITY_NICHES = ["padarias", "clinicas-odontologicas", "imobiliarias"];
@@ -120,9 +119,9 @@ const BlogPost = () => {
     url: pageUrl,
     mainEntityOfPage: pageUrl,
     image: ogImageUrl,
-    // Autor identificado: Search Console (2026-11) pediu sinal de quem
-    // assina o conteúdo, antes só havia a organização.
-    author: { "@type": "Person", name: BLOG_AUTHOR },
+    // Sem assinatura pessoal (pedido do usuário, 2026-11-16): o post é
+    // assinado pela empresa, que também é a publisher.
+    author: { "@type": "Organization", name: BLOG_AUTHOR },
     publisher: {
       "@type": "Organization",
       name: "CODEXY",
@@ -205,10 +204,6 @@ const BlogPost = () => {
               </h1>
               <p className="mt-5 max-w-xl text-lg text-white/80">{post.excerpt}</p>
               <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/70">
-                <span className="flex items-center gap-1.5 font-medium text-white/90">
-                  <Bot className="h-4 w-4" />
-                  Por {BLOG_AUTHOR}
-                </span>
                 <span className="flex items-center gap-1.5">
                   <CalendarDays className="h-4 w-4" />
                   {new Date(post.publishedAt + "T00:00:00").toLocaleDateString("pt-BR", {
