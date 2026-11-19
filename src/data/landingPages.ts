@@ -183,6 +183,7 @@ const BRAZILIAN_CITIES: StateInfo[] = (
       { label: "Belford Roxo", uf: "RJ", preposition: "em" },
       { label: "Niterói", uf: "RJ", preposition: "em" },
       { label: "São José do Rio Preto", uf: "SP", preposition: "em" },
+      { label: "Ananindeua", uf: "PA", preposition: "em" },
   ] as const
 ).map((city) => ({
   ...city,
