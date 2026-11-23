@@ -300,18 +300,18 @@ export const servicePages: ServicePageData[] = [
     name: "Chatbot e automação de WhatsApp",
     serviceType: "Chatbot e automação de atendimento por WhatsApp",
     eyebrow: "Chatbot para WhatsApp",
-    h1: "Chatbot para WhatsApp: atendimento automático que não deixa cliente sem resposta",
+    h1: "Automação de atendimento no WhatsApp: chatbot que não deixa cliente sem resposta",
     subheadline:
       "Respostas às perguntas mais comuns, coleta de dados e encaminhamento para a equipe, funcionando no número de WhatsApp que a sua empresa já usa.",
     seo: {
-      title: "Chatbot para WhatsApp e Automação de Atendimento | CODEXY",
+      title: "Automação de Atendimento no WhatsApp com Chatbot | CODEXY",
       description:
         "Chatbot para WhatsApp e automação de atendimento sob medida: responda clientes a qualquer hora e passe para a equipe só o que precisa. Peça um orçamento.",
       keywords:
         "chatbot para whatsapp, automação de atendimento, chatbot whatsapp business, atendimento automático whatsapp, robô de atendimento, automação whatsapp",
     },
     intro: [
-      "Quem escreve para uma empresa espera resposta rápida. Quando ela demora, o cliente procura o concorrente. Um chatbot responde na hora às dúvidas repetidas (horário, endereço, serviços, como agendar), coleta as informações necessárias e só chama uma pessoa quando a conversa realmente exige.",
+      "Automação de atendimento é colocar um assistente para responder sozinho o que se repete, e deixar para a equipe só o que precisa de uma pessoa. Quem escreve para uma empresa espera resposta rápida; quando ela demora, o cliente procura o concorrente. Um chatbot responde na hora às dúvidas repetidas (horário, endereço, serviços, como agendar), coleta as informações necessárias e só chama uma pessoa quando a conversa realmente exige.",
       "A CODEXY desenvolve o chatbot sob medida para o seu tipo de negócio, com fluxos escritos a partir das perguntas que os seus clientes de fato fazem. Ele funciona no WhatsApp que a empresa já usa, sem obrigar o cliente a salvar um número novo.",
       "Também conectamos o atendimento a outros pontos do processo: agenda, planilhas, CRM e avisos para a equipe. Para clínicas e consultórios, a CODEXY é parceira do DoctorChatBot, solução específica de agenda e atendimento por WhatsApp para a área da saúde.",
     ],

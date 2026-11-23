@@ -310,14 +310,23 @@ const BlogPost = () => {
               <p className="mb-6 text-tech-gray">
                 A CODEXY implanta chatbot de WhatsApp pronto pra atender seus clientes 24h.
               </p>
-              <Button
-                size="lg"
-                className="tech-glow group font-semibold"
-                onClick={() => openWhatsApp(DEFAULT_WHATSAPP_MESSAGE)}
-              >
-                <MessageCircle className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                Falar no WhatsApp
-              </Button>
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button
+                  size="lg"
+                  className="tech-glow group font-semibold"
+                  onClick={() => openWhatsApp(DEFAULT_WHATSAPP_MESSAGE)}
+                >
+                  <MessageCircle className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  Falar no WhatsApp
+                </Button>
+                {/* Link interno para a página que vende: o blog concentra as impressões do site. */}
+                <a
+                  href="/servicos/chatbot-whatsapp/"
+                  className="text-sm font-semibold text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+                >
+                  Ver como funciona a automação de atendimento no WhatsApp
+                </a>
+              </div>
             </div>
 
             {post.faq && post.faq.length > 0 && (
