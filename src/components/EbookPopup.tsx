@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { BookOpen, Check, Download, Loader2, X } from "lucide-react";
+import { BookOpen, Check, X } from "lucide-react";
+import EbookForm, { EBOOK_STORAGE_KEY } from "@/components/ebook/EbookForm";
 
 /**
  * Popup do e-book "IA para automatizar processos" (captura de lead).
@@ -11,17 +12,11 @@ import { BookOpen, Check, Download, Loader2, X } from "lucide-react";
  *   toca nele — o Google penaliza popup que cobre a página no celular.
  * Renderiza só depois de montar no navegador (sem divergência com o prerender).
  *
- * O formulário vai para o módulo lead-capture (plano/modules/lead-capture).
+ * O formulário (EbookForm) é o mesmo da página /ebook/, onde o popup não aparece.
  */
 
-const SITE = "codexy";
-const API_URL = import.meta.env.VITE_LEAD_API_URL ?? "https://codexy.com.br/api/leads/ebook";
-const PDF_URL = "/ebook/ia-para-automatizar-processos.pdf";
-const PDF_NAME = "IA-para-automatizar-processos-CODEXY.pdf";
-const PRIVACY_URL = "/politica-privacidade/";
-const HIDDEN_PATHS = ["/politica-privacidade", "/termos-uso", "/cookies", "/preview"];
+const HIDDEN_PATHS = ["/politica-privacidade", "/termos-uso", "/cookies", "/preview", "/ebook"];
 
-const STORAGE_KEY = "codexy:ebook-ia";
 const SNOOZE_DAYS = 14;
 const MIN_DELAY_MS = 10_000;
 const AUTO_OPEN_MS = 45_000;
@@ -31,7 +26,7 @@ type Stage = "hidden" | "teaser" | "open";
 
 function readState(): { done?: boolean; snoozedUntil?: number } {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}");
+    return JSON.parse(localStorage.getItem(EBOOK_STORAGE_KEY) ?? "{}");
   } catch {
     return {};
   }
@@ -39,29 +34,17 @@ function readState(): { done?: boolean; snoozedUntil?: number } {
 
 function writeState(value: { done?: boolean; snoozedUntil?: number }) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    localStorage.setItem(EBOOK_STORAGE_KEY, JSON.stringify(value));
   } catch {
     // navegação privada sem storage: o popup pode voltar, sem problema
   }
-}
-
-function startDownload() {
-  const a = document.createElement("a");
-  a.href = PDF_URL;
-  a.download = PDF_NAME;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
 }
 
 export default function EbookPopup() {
   const { pathname } = useLocation();
   const [mounted, setMounted] = useState(false);
   const [stage, setStage] = useState<Stage>("hidden");
-  const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
-  const [error, setError] = useState("");
-  const openedAt = useRef(0);
-  const firstInput = useRef<HTMLInputElement>(null);
+  const [done, setDone] = useState(false);
 
   const blocked = HIDDEN_PATHS.some((p) => pathname.startsWith(p));
 
@@ -98,54 +81,16 @@ export default function EbookPopup() {
   }, [mounted, blocked, stage]);
 
   const dismiss = useCallback(() => {
-    if (status !== "done") writeState({ snoozedUntil: Date.now() + SNOOZE_DAYS * 86_400_000 });
+    if (!done) writeState({ snoozedUntil: Date.now() + SNOOZE_DAYS * 86_400_000 });
     setStage("hidden");
-  }, [status]);
+  }, [done]);
 
   useEffect(() => {
     if (stage !== "open") return;
-    openedAt.current = Date.now();
-    firstInput.current?.focus();
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && dismiss();
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [stage, dismiss]);
-
-  async function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    setError("");
-    setStatus("sending");
-    try {
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          site: SITE,
-          name: form.get("name"),
-          email: form.get("email"),
-          whatsapp: form.get("whatsapp"),
-          consent: form.get("consent") === "on",
-          company_site: form.get("company_site"),
-          page_path: pathname,
-          elapsed_ms: Date.now() - openedAt.current,
-        }),
-      });
-      if (res.status === 400 || res.status === 429) {
-        const data = await res.json().catch(() => ({}));
-        setError(data.error ?? "Confira os dados e tente de novo.");
-        setStatus("idle");
-        return;
-      }
-      // Erro do servidor: não prende quem já preencheu tudo, entrega o e-book igual.
-      if (!res.ok) console.error("lead do e-book não registrado:", res.status);
-    } catch (err) {
-      console.error("lead do e-book não registrado:", err);
-    }
-    writeState({ done: true });
-    setStatus("done");
-    startDownload();
-  }
 
   if (!mounted || blocked || stage === "hidden") return null;
 
@@ -203,95 +148,7 @@ export default function EbookPopup() {
         </div>
 
         <div className="p-6 sm:p-8">
-          {status === "done" ? (
-            <div className="flex h-full flex-col items-start justify-center gap-4">
-              <h2 id="ebook-popup-title" className="text-2xl font-bold text-primary">
-                Seu e-book está baixando
-              </h2>
-              <p className="text-tech-gray">
-                Se o download não começou, use o botão abaixo. Boa leitura!
-              </p>
-              <a
-                href={PDF_URL}
-                download={PDF_NAME}
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 font-semibold text-primary-foreground hover:opacity-90"
-              >
-                <Download className="h-4 w-4" /> Baixar o e-book
-              </a>
-            </div>
-          ) : (
-            <form onSubmit={submit} className="space-y-4">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-accent">E-book grátis</p>
-                <h2 id="ebook-popup-title" className="mt-1 text-2xl font-bold leading-tight text-primary">
-                  Como usar IA para automatizar os processos da sua empresa
-                </h2>
-                <p className="mt-2 text-sm text-tech-gray">Guia prático, sem jargão. Preencha e baixe na hora.</p>
-              </div>
-
-              <label className="block text-sm font-medium text-primary">
-                Nome
-                <input
-                  ref={firstInput}
-                  name="name"
-                  required
-                  minLength={2}
-                  maxLength={80}
-                  autoComplete="name"
-                  className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-base outline-none focus:border-primary"
-                />
-              </label>
-              <label className="block text-sm font-medium text-primary">
-                E-mail
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  maxLength={254}
-                  autoComplete="email"
-                  className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-base outline-none focus:border-primary"
-                />
-              </label>
-              <label className="block text-sm font-medium text-primary">
-                WhatsApp <span className="font-normal text-tech-gray">(opcional)</span>
-                <input
-                  name="whatsapp"
-                  type="tel"
-                  inputMode="tel"
-                  maxLength={20}
-                  autoComplete="tel"
-                  placeholder="(31) 99999-9999"
-                  className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-base outline-none focus:border-primary"
-                />
-              </label>
-
-              {/* Campo invisível contra robô: gente não vê nem preenche. */}
-              <input name="company_site" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
-
-              <label className="flex gap-2 text-xs leading-relaxed text-tech-gray">
-                <input name="consent" type="checkbox" required className="mt-0.5 h-4 w-4 shrink-0 accent-primary" />
-                <span>
-                  Autorizo a CODEXY a usar meus dados para enviar o e-book e entrar em contato sobre os seus serviços,
-                  conforme a{" "}
-                  <a href={PRIVACY_URL} target="_blank" rel="noopener" className="underline">
-                    Política de Privacidade
-                  </a>
-                  . Posso cancelar quando quiser.
-                </span>
-              </label>
-
-              {error && <p className="text-sm font-medium text-red-600">{error}</p>}
-
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
-              >
-                {status === "sending" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
-                Quero o e-book grátis
-              </button>
-            </form>
-          )}
+          <EbookForm pagePath={pathname} autoFocus titleId="ebook-popup-title" onDone={() => setDone(true)} />
         </div>
       </div>
     </div>

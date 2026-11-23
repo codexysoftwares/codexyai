@@ -15,6 +15,7 @@ import InformacoesLandingPage from "./pages/InformacoesLandingPage";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import ParceiroDoctorChatbot from "./pages/ParceiroDoctorChatbot";
+import EbookPage from "./pages/EbookPage";
 import ServicosIndex from "./pages/ServicosIndex";
 import ServicoPage from "./pages/ServicoPage";
 import SegmentosIndex from "./pages/SegmentosIndex";
@@ -56,6 +57,7 @@ export const AppRoutes = () => (
       <Route path="/termos-uso" element={<TermosUso />} />
       <Route path="/cookies" element={<Cookies />} />
       <Route path="/parceiros/doctorchatbot" element={<ParceiroDoctorChatbot />} />
+      <Route path="/ebook" element={<EbookPage />} />
       <Route path="/servicos" element={<ServicosIndex />} />
       <Route path="/servicos/:slug" element={<ServicoPage />} />
       <Route path="/segmentos" element={<SegmentosIndex />} />

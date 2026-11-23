@@ -1,3 +1,4 @@
+import { Fragment, type ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
@@ -28,6 +29,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import InformacoesNavbar from "@/components/landing/InformacoesNavbar";
+import EbookInlineCta from "@/components/ebook/EbookInlineCta";
 import { getAllBlogPosts, getBlogPostBySlug, FALLBACK_COVER, type BlogPost as BlogPostData } from "@/data/blogPosts";
 import { landingPages, type LandingPageData } from "@/data/landingPages";
 import { selectRelatedBlogPosts } from "@/lib/relatedBlogPosts";
@@ -104,6 +106,10 @@ const BlogPost = () => {
   );
   const headings = getHeadings(post);
   const readingMinutes = estimateReadingMinutes(post);
+  // Convite do e-book antes do 2º subtítulo: a pessoa já leu a abertura e
+  // ainda está no meio do texto. Post sem 2º subtítulo recebe depois do 3º bloco.
+  const headingIndexes = post.content.flatMap((block, index) => (block.type === "heading" ? [index] : []));
+  const ebookCtaAt = headingIndexes[1] ?? Math.min(3, post.content.length);
   const pageUrl = `${SITE_URL}/blog/${post.slug}/`;
   const ogImageUrl = new URL(post.seo.ogImage ?? post.coverImage ?? "/logo.png", SITE_URL).toString();
   const shareText = encodeURIComponent(post.title);
@@ -263,7 +269,10 @@ const BlogPost = () => {
 
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
           <article className="min-w-0">
-            {post.content.map((block, index) => {
+            {post.content.map((block, index) => (
+              <Fragment key={index}>
+              {index === ebookCtaAt && <EbookInlineCta />}
+              {((): ReactNode => {
               if (block.type === "heading") {
                 return (
                   <h2
@@ -289,7 +298,10 @@ const BlogPost = () => {
                   {block.text}
                 </p>
               );
-            })}
+              })()}
+              </Fragment>
+            ))}
+            {ebookCtaAt >= post.content.length && <EbookInlineCta />}
 
             <div className="mt-12 rounded-2xl bg-secondary/50 p-8 text-center">
               <h2 className="mb-3 text-xl font-bold text-primary">

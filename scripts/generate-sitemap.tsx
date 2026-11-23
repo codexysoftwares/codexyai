@@ -35,6 +35,7 @@ const staticRoutes: SitemapRoute[] = [
   { path: "/termos-uso/", priority: "0.3" },
   { path: "/cookies/", priority: "0.3" },
   { path: "/parceiros/doctorchatbot/", priority: "0.8" },
+  { path: "/ebook/", priority: "0.7", lastmod: "2026-11-23" },
 ];
 
 const blogRoutes = [

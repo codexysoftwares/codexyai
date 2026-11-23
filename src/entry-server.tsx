@@ -21,6 +21,7 @@ export const prerenderRoutes = [
   "/blog",
   ...blogPosts.map((post) => `/blog/${post.slug}`),
   "/parceiros/doctorchatbot",
+  "/ebook",
   "/preview/melhorada",
   "/preview/console",
   "/preview/vitrine",
