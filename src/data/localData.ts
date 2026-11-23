@@ -3228,8 +3228,8 @@ export const LOCAL_DATA: LocalDataset = {
     ],
     "lava-rapidos": [
       {
-        "id": "117884",
-        "label": "lavanderias, tinturarias e toalheiros"
+        "id": "117369",
+        "label": "manutenção e reparação de veículos automotores (classe que inclui lavagem de veículos)"
       }
     ],
     "estetica-automotiva": [
